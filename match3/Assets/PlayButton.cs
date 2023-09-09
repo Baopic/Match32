@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class ButtonController : MonoBehaviour
+public class ButtonSubscription : MonoBehaviour
 {
-    public string Gameplay; // Имя сцены, которую нужно загрузить
+    private Button button;
 
-    public void LoadScene()
+    private void Start()
     {
-        SceneManager.LoadScene(Gameplay); // Загружаем указанную сцену
+        button = GetComponent<Button>();
+        button.onClick.AddListener(ButtonClick);
     }
+
+    private void ButtonClick()
+    {
+        SceneManager.LoadScene(2);
+        Debug.Log("Кнопка была нажата!");
+    }  
 }
